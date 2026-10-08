@@ -1,0 +1,4 @@
+interface:
+  display_name: "Situ2001 Plugin Setup"
+  short_description: "Install and refresh situ2001 for Codex and Claude Code"
+  default_prompt: "Use $situ2001-plugin-setup to install or refresh this plugin for Codex and Claude Code."

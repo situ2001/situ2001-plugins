@@ -27,7 +27,7 @@ After changing plugin skills, hooks, scripts, or metadata:
    codex plugin add situ2001@<marketplace-name>
    ```
 
-   The configured marketplace is `situ2001-plugins`. The personal marketplace is discovered implicitly; do not register it again. For another marketplace, follow [codex-plugin-setup](skills/codex-plugin-setup/SKILL.md).
+   The configured marketplace is `situ2001-plugins`. The personal marketplace is discovered implicitly; do not register it again. For another marketplace, follow [situ2001-plugin-setup](skills/situ2001-plugin-setup/SKILL.md).
 6. Tell the user to start a new Codex task to load the refreshed plugin. Reinstall last: the current task may retain hook paths into the old cache after it is removed.
 
 This repository's timestamp format takes precedence over the bundled plugin-creator helper's `+codex.<timestamp>` convention. Use the repository script above when updating this plugin.

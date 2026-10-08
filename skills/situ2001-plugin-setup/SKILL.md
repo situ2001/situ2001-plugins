@@ -1,13 +1,13 @@
 ---
-name: codex-plugin-setup
-description: Register an existing local directory as a discoverable Codex plugin, or refresh its installed version after local changes.
+name: situ2001-plugin-setup
+description: Install or refresh the situ2001 plugin for Codex and Claude Code from an existing local directory or marketplace.
 ---
 
-# Codex Plugin Setup
+# Situ2001 Plugin Setup
 
-Use this skill when a user wants the current directory (or another existing directory) to be installed as a local Codex plugin.
+Use this skill to install or refresh the situ2001 plugin for Codex and Claude Code. Follow the requested agent scope; when no agent is specified, consider both agents and refresh existing installations for each.
 
-## Initial setup
+## Codex initial setup
 
 1. Confirm the plugin root contains `.codex-plugin/plugin.json`, then validate it:
 
@@ -42,7 +42,7 @@ Use this skill when a user wants the current directory (or another existing dire
 
    Do not run `codex plugin marketplace add` for the default `~/.agents/plugins/marketplace.json` marketplace.
 
-## Refresh after edits
+## Codex refresh after edits
 
 For a plugin already listed in a local marketplace, read its marketplace name, rotate the cachebuster, and reinstall. Follow the target repository's `AGENTS.md` for its version format and refresh command. For this repository, use `python3 scripts/refresh-plugin-version.py`; otherwise, when no repository convention exists, use the bundled helper below:
 
@@ -53,6 +53,33 @@ codex plugin add <plugin-name>@<marketplace-name>
 ```
 
 Start a new Codex thread after reinstalling so updated skills, hooks, or tools are loaded. Validate again if manifest or layout files changed.
+
+## Claude Code setup and refresh
+
+For local development, validate `.claude-plugin/plugin.json`, then load the live directory in a new session:
+
+```bash
+claude plugin validate <plugin-root>/.claude-plugin/plugin.json
+claude --plugin-dir <absolute-plugin-root>
+```
+
+For a persistent installation, validate `.claude-plugin/marketplace.json` too. Check `claude plugin marketplace list` for an existing registration. Add the repository path (for local changes) or `situ2001/situ2001-plugins` (for published changes) only when that source is not registered. Read the name from the Claude marketplace manifest; it is independent of the Codex personal marketplace name. This repository uses `situ2001-plugins`:
+
+```bash
+claude plugin marketplace add <plugin-root-or-repository>
+claude plugin install situ2001@situ2001-plugins --scope user
+claude plugin list
+```
+
+For an existing installation, refresh its registered marketplace and update the plugin:
+
+```bash
+claude plugin marketplace update <claude-marketplace-name>
+claude plugin update situ2001@<claude-marketplace-name> --scope user
+claude plugin list
+```
+
+Use the existing installation scope when updating. Keep the Claude manifest's release version unchanged unless making an intended release; the Codex timestamp is separate. Restart Claude Code after updating. To inspect uncommitted local edits directly, use `--plugin-dir` with the source directory.
 
 ## Boundaries
 
