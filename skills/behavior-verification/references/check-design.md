@@ -1,10 +1,10 @@
 # Designing a check that can be wrong
 
-Use this reference when the difficult part is deciding what to assert, selecting inputs, or reviewing a generated harness. Finish with a small set of cases where each has an independent expected result and a named defect it would detect.
+Use this reference when designing or adjusting cases, fixtures, assertions, observation windows, or negative controls, or evaluating an existing harness. Finish with a small set of cases where each has an independent expected result and a named defect it would detect.
 
 ## Follow the causal path
 
-Trace trigger → production entry → relevant collaborators → observable effect. Mark the links that must remain real. Place fixtures outside those links. Keep the transformation or coordination under investigation real; replace external producers or consumers only where their internals are outside the question. Record the inputs and outputs at those boundaries.
+Trace trigger → production entry → relevant collaborators → observable effect. Mark the links that must remain real. Place fixtures outside those links. Keep the transformation or coordination under investigation real; replace external producers or consumers only where their internals are outside the question. Record the inputs and outputs at those boundaries. A catch-all loader or stub returning the desired result regardless of input can conceal the defect; keep substitutions explicit.
 
 Choose the seam by the failure mechanism, not by what is easiest to stub. If routing, disabled controls, module initialization, or event registration could be the failure, calling the final handler skips the disputed link. Use the real entry or narrow the claim explicitly. A replacement child can test parent wiring but cannot validate the child's internals.
 
@@ -26,6 +26,8 @@ Assert observable consequences rather than internal implementation choices:
 | Retry recovers | Fail, invoke retry, succeed, verify error clears | Retry button exists |
 | Cleanup prevents effects | Dispose, deliver the event/response, assert no forbidden effect | Cleanup function exists |
 
+Compare parsed JSON fields when key order is irrelevant, and exact bytes when serialization is the contract. Source-text matches and build success can supplement behavioral evidence but do not establish runtime behavior.
+
 Use exact counts only when their meaning is justified. Development instrumentation can produce extra events; investigate and separate that observation from a production guarantee. Compare error identity only when the same object should propagate; serialized errors need field assertions. Use tolerances for numerical contracts that allow approximation, with units and a justified bound.
 
 ## Select discriminating cases
@@ -38,7 +40,7 @@ Start with the reported failure and one nearby valid case that rules out “alwa
 - Lifecycle: before mount, mounted, disposed, or remounted when subscriptions/resources matter.
 - Recovery: failure → retry → success when retry is part of the contract.
 
-Do not generate a Cartesian product of every option. Each case should name the distinct failure it detects. Distinctive fixture values help reveal swapped fields or stale state; identical IDs, balances, or messages hide them. Use contract-valid error/empty shapes as well as successful shapes. An invalid fixture that production could never receive may test robustness, but it does not reproduce the reported failure.
+Do not generate a Cartesian product of every option. Each case should name the distinct failure it detects. Distinctive fixture values help reveal swapped fields or stale state; identical IDs, balances, or messages hide them. Assert consequential request arguments, and make fixture responses distinguish correct and incorrect inputs. An unconditional successful response can conceal malformed requests. Prefer contract-derived values or observed response shapes to invented successful data. Use contract-valid error/empty shapes as well as successful shapes. An invalid fixture that production could never receive may test robustness, but it does not reproduce the reported failure.
 
 Where exact output is unavailable, a justified invariant or metamorphic relation can help: round trips preserve supported values, output ordering respects a documented rule, or an irrelevant field does not change the result. Derive the relation from the contract, not an assumption about the implementation.
 
@@ -96,3 +98,5 @@ If a step can succeed without reaching the production behavior, inspect the seam
 | Timeout | Capture pending calls/listeners and the last observed state; identify the missing transition | Neither pass nor automatic product failure |
 | Pass plus warnings or extra side effects | Identify their producer and impact before claiming the whole contract passed | Selected assertion passed; other evidence unresolved |
 | Baseline and mutant both pass the core assertion | Check the executed source, trigger, mock seam, and assertion | Sensitivity not established |
+
+Repair setup or fixture mismatches while preserving the expected behavior unless contract evidence shows that the requirement was misunderstood. When changing an assertion, cite the contract or runtime evidence that justifies it and state which claim is no longer tested.

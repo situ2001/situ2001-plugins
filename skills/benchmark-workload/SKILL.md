@@ -25,11 +25,11 @@ Separate cold startup, initialization or model loading, warm execution, and sust
 
 Choose run count, sampling interval, and duration from workload variability, metric resolution, the user's constraints, and the decision being made. State the rationale; there is no universal fixed run count or measurement window. Arrange cleanup for owned processes and monitors.
 
-For common measurement boundaries:
+Read the relevant sections of [measurement boundaries](references/measurement-boundaries.md) when measuring:
 
-- **Web delivery:** distinguish raw build size, compressed artifact size, and actual transferred bytes. Capture the requested page's requests, encoding, and cache conditions; a bundle inventory alone does not measure network transfer or page readiness.
-- **Inference:** separate loading from inference, identify the actual CPU/GPU backend, and wait for device completion when execution is asynchronous. Check the resulting output. For generated audio, output duration and elapsed inference time can support a real-time-factor comparison when useful.
-- **Resource use:** retain the tool's CPU normalization and memory definition, such as RSS or device allocation. On shared or unified-memory systems, overlapping memory categories cannot simply be added. System GPU activity does not by itself attribute work to the target process.
+- [Web delivery](references/measurement-boundaries.md#web-delivery): build size, network transfer, or page readiness.
+- [Inference](references/measurement-boundaries.md#inference): model execution, including generated audio.
+- [Resource use](references/measurement-boundaries.md#resource-use): CPU, memory, or GPU activity.
 
 This step is complete when the instruments can observe the chosen operation at the claimed scope, with their relevant limitations understood.
 

@@ -25,11 +25,7 @@ Record session/turn IDs, repository, commit, model ID, effort, service tier when
 
 ## Measure execution
 
-Use [log-accounting.md](references/log-accounting.md) when extracting or interpreting metrics, especially for multi-turn, partial, forked, or older logs. It defines token deltas, missing-data behavior, and tool timing limits. The helper supports common rollout shapes; warnings or unfamiliar schemas require inspecting the relevant raw events rather than trusting a guessed value.
-
-Report per-run measurements before means or ratios. Keep effort differences visible. Count outer tool rounds separately from shell commands; parallel batches and tool discovery are not equivalent to one search each.
-
-For search traces, list each round's relative start time, key queries and scope, files read, visible results, and relevant truncation or failed attempts. Distinguish useful verification from repeated work using the question each read resolves. A skill announcement is not proof that its tool was used. A result truncation estimate is not billed token usage. Attribute the time outside tools to model processing, generation, communication, and other unseparated overhead, not exclusively reasoning.
+Read [log-accounting.md](references/log-accounting.md) when extracting or interpreting metrics: it defines event boundaries, token deltas, missing-data behavior, and tool timing. When comparing search behavior, read its **Tool traces** section and inspect the selected turns with `--trace`. Warnings or unfamiliar schemas require inspecting raw events rather than trusting a guessed value.
 
 ## Evaluate the answer
 
@@ -47,14 +43,6 @@ Read [cost-accounting.md](references/cost-accounting.md). Fetch current official
 
 For a requested saved analysis, create a new Markdown file at the user-specified location or a suitable documentation directory. For an answer-only request, respond directly. Use the user's language. If a prior report disappeared, locate it narrowly and preserve new findings separately rather than recreating deleted material without context.
 
-A useful report contains:
+Read [reporting.md](references/reporting.md) when forming the comparison report, including a direct answer. Include only the analyses in the user's scope; estimate cost only when requested.
 
-- Findings and the important comparability caveat.
-- Selected samples, user-input differences, and measurement definitions.
-- Per-run latency/token table and justified aggregates.
-- Cost decomposition, official sources, date, and assumptions when in scope.
-- Chronological search traces and their practical impact.
-- Source-backed correctness, omissions, and uncertainty.
-- Original session links and repository evidence links.
-
-Compute ratios from unrounded values and state the denominator for savings. Avoid claiming population-level model superiority from one or two runs. Keep raw logs, private screenshots, and unrelated prompts out of shared artifacts; reference local evidence or include only the extracts needed. Finish with the report link, central result, and material limits.
+Keep raw logs, private screenshots, and unrelated prompts out of shared artifacts; reference local evidence or include only the extracts needed. Finish with the report link when saved, central result, and material limits.

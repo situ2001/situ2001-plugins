@@ -10,6 +10,8 @@ Prefer `task_complete.duration_ms` for completed latency and `time_to_first_toke
 
 ## Usage
 
+Report per-run measurements before means or ratios. Keep effort differences visible.
+
 `token_count.info.total_token_usage` is cumulative and must not be summed across events. Subtract the last cumulative snapshot before the turn from the last within it. Fresh sessions whose first total equals their first `last_token_usage` can establish a zero baseline. With inherited context or a missing baseline, mark the delta unknown. Do not assume a later turn starts from zero.
 
 Preserve available fields: `input_tokens`, `cached_input_tokens`, `cache_write_input_tokens`, `output_tokens`, `reasoning_output_tokens`, and `total_tokens`. Missing fields are unknown, not zero. Check for decreasing counters, repeated events, missing end snapshots, and total/input/output inconsistencies. If a reset or fork makes subtraction unreliable, split accounting intervals only with evidence; otherwise report unknown.
@@ -30,8 +32,10 @@ Use each event's `last_token_usage` to inspect per-request context sizes, not as
 
 ## Tool traces
 
+Count outer tool rounds separately from shell commands; parallel batches and tool discovery are not equivalent to one search each. For search comparisons, list each round's relative start time, key queries and scope, files read, visible results, and relevant truncation or failed attempts. Distinguish useful verification from repeated work using the question each read resolves. A skill announcement is not proof that its tool was used.
+
 Match `function_call`/`custom_tool_call` with the corresponding output by `call_id`. Record the tool name and raw arguments/input as data. CUA or other shapes may need an adapter. Outer orchestration code can contain several shell invocations, loops, or parallel batches; static occurrences of `exec_command` do not reliably count actual commands.
 
-Report both summed tool response latency and, when calls overlap, the union of intervals. Their sum can exceed elapsed task time. Tools returning a live process ID or `Script running` have yielded, not necessarily completed: label the duration as time to tool response and include subsequent waits when reconstructing process lifetime. Missing outputs mean incomplete timing. Never count source code's `original_token_count` truncation marker as API input usage.
+Report both summed tool response latency and, when calls overlap, the union of intervals. Their sum can exceed elapsed task time. Tools returning a live process ID or `Script running` have yielded, not necessarily completed: label the duration as time to tool response and include subsequent waits when reconstructing process lifetime. Missing outputs mean incomplete timing. Result truncation estimates, including `original_token_count`, are not billed token usage. Attribute time outside tools to model processing, generation, communication, and other unseparated overhead, not exclusively reasoning.
 
 The bundled extractor omits image bytes, hashes decoded data-URL image bytes, and emits trace text only with `--trace`. Hash equality establishes identical bytes, not equivalent cropping/rendering or model image processing. Non-data image URLs are references, not content identity. Unknown schemas should remain visible in warnings rather than be normalized into false precision.

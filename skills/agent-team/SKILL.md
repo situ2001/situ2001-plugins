@@ -5,7 +5,7 @@ description: Orchestrate multi-agent delivery with GPT-6 Astra Medium direction 
 
 # Agent Team
 
-Give the user control over intent, constraints, and success criteria; give agents ownership of completing the work. Treat the main agent as the **director**: reserve its attention for the big picture, direction, consequential decisions, and acceptance. Delegate concrete execution as fully as practical; the director need not perform hands-on work to own the outcome.
+Give the user control over intent, constraints, and success criteria; give agents ownership of completing the work. The main agent is the **director**, responsible for direction, consequential decisions, and acceptance. Delegate concrete execution as fully as practical.
 
 ## Establish the director
 
@@ -23,39 +23,31 @@ Follow the focused/base interview's frontier and completion rules. Summarize the
 
 ## Delegate commitments
 
-The director owns task decomposition, shared interfaces, consequential tradeoffs, and final acceptance. Delegate investigation, implementation, debugging, routine validation, and integration work to executors by default. Use their findings to refine the plan, resolve dependencies, and give guidance. When work stalls, clarify the commitment, supply missing context, or reassign it so execution stays with an executor.
+The director owns decomposition and shared interfaces. Delegate investigation, implementation, debugging, routine validation, and integration to executors by default. Executors decide reversible implementation details and complete their contract autonomously, including debugging and appropriate routine tests. Use findings to refine the plan and resolve dependencies; when work stalls, clarify the commitment, supply missing context, or reassign it.
 
 Choose roles and concurrency to fit the work; a developer can investigate and test its own change. Add an independent verifier when behavioral uncertainty or the cost of a mistake justifies a separate perspective. A small task can use one executor while the main agent remains the director.
 
 Run independent workstreams in parallel when dependencies, write ownership, and available agent slots allow it. Launch ready work before waiting for results; wait when dependent work or acceptance needs those results.
 
-Give each executor a brief containing:
+Before first dispatch or reassignment, read [delegation contract](references/delegation-contract.md). Each brief identifies:
 
-- **Outcome and authority:** confirmed intent, constraints, acceptance criteria, and decisions already settled. Identify what it can decide and which changes require escalation.
-- **Context and access:** relevant source/artifact paths, applicable instructions or skills, current state, dependencies, and available tools/resources. Provide essential content when the recipient cannot access a reference. Omit unrelated conversation history.
-- **Ownership and coordination:** files or modules it may write, shared interface commitments, dependent work, and peer agent IDs. Allocate one active writer for shared files; serialize changes or explicitly transfer ownership when work overlaps. Agents share a workspace unless an isolated checkout is actually supplied.
-- **Return contract:** the usable deliverable, caller-relevant interface and semantics, and acceptance evidence or unresolved gaps. State where to return results and how to reach collaborators. Wire peers together using the agent IDs returned by the tools; send missing IDs once those agents exist.
-
-Describe outcomes and constraints, not a sequence of edits for an executor to follow. Executors own implementation, debugging, and appropriate routine tests. They may adjust reversible details within their contract and complete the assigned work without reporting every step. Further delegation should have a concrete benefit and respect the available slots and ownership agreements.
-
-At handoff, developers return the implemented interface and the semantics callers need: relevant invariants, lifecycle, failure behavior, and integration instructions. Include paths or symbols and meaningful validation results. Explain a change to a promised interface before dependent work relies on it.
+- **Outcome and authority:** confirmed goal, acceptance criteria, settled decisions, and escalation boundaries.
+- **Context and access:** source/artifact paths, applicable instructions, dependencies, and accessible resources.
+- **Ownership and coordination:** write scope, shared interfaces, and peer addresses. Keep one active writer per shared file; serialize changes or explicitly transfer ownership. Agents share a workspace unless an isolated checkout is supplied.
+- **Return contract:** usable deliverable, caller-facing semantics, return location, acceptance evidence, and unresolved gaps.
 
 ## Close defects with evidence
 
-When using an independent verifier, give it the confirmed acceptance criteria, executable resources, and the delivered interface. Have it exercise behavior independently and return an acceptance verdict with traceable evidence and remaining gaps. Developer claims are context, not proof. Evidence should identify the artifact or revision checked, the check or reproduction, and its result; raw logs remain available by reference when useful.
+When choosing independent verification, read [independent verification](references/independent-verification.md). The verifier exercises behavior independently against confirmed criteria; developer claims are context, not proof. Connect verifier and developer directly for the reproduce → fix → recheck loop, then have the verifier return its verdict, traceable evidence, and remaining gaps to the director.
 
-Connect verifier and developer directly through the available agent messaging tools. Reproducible defects within the agreed contract go to the developer; the developer fixes them and returns the changed behavior and evidence; the verifier checks the affected acceptance criteria. The verifier reports completion or an unresolved blocker to the director rather than routing each correction through it.
-
-Escalate changes to the agreed goal, scope, shared/public interface, or authorization, and conflicting evidence that needs a decision. Include the failed commitment, relevant evidence, consequence, and a recommended next step. The director resolves tradeoffs within its authority and returns to the user for changes requiring user judgment or permission. A runtime failure or uncertain implementation detail alone belongs in the executor's investigation loop.
+Escalate changes to the agreed goal, scope, shared/public interface, or authorization, and conflicting evidence requiring a decision. Include the failed commitment, evidence, consequence, and recommended next step. The director decides within its authority and returns to the user when judgment or permission is required. Runtime failures and uncertain implementation details belong in the executor's investigation loop.
 
 Use completion notifications or runtime-appropriate agent waits. Investigate status when a dependency is blocked or intervention could help; avoid turning routine progress into repeated polling and summaries. Keep the user informed of meaningful findings, decisions, and remaining uncertainty.
-
-For a Codex director using Herdr with no independent work left while a delegated result is pending, read [interrupt, wait, and continue](references/codex-herdr-wait.md) before handing the wait to an independent controller.
 
 ## Accept and deliver
 
 The director checks the key commitments against the delivered interface and acceptance evidence, including integration between workstreams. When a concrete discrepancy, missing evidence, or integration risk needs investigation or another check, delegate that follow-up and assess the returned evidence. Inspect source directly only when needed for a specific director-level decision; routine acceptance relies on the delivered evidence.
 
-For Herdr, preserve the accepted results and complete the runtime guide's executor cleanup before final delivery or handoff, unless the user asks to keep executors available.
+Complete the selected runtime guide's lifecycle requirements before final delivery or handoff.
 
 Accept when the confirmed criteria are supported and material gaps are resolved or explicitly accepted by the user. Report what was delivered, how to use its interface or entry point, what the evidence establishes, and any remaining limits. Keep implementation logs and internal coordination out of the user's delivery summary.
