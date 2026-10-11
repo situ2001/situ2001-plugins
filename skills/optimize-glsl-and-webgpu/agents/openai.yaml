@@ -1,0 +1,3 @@
+interface:
+  display_name: "Optimize GLSL and WebGPU"
+  short_description: "Optimize shader rendering with measured CPU/GPU placement"
