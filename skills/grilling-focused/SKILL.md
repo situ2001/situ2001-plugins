@@ -13,4 +13,4 @@ For each candidate question, identify which downstream decisions or work would c
 
 Apply the full base methodology to this scoped tree, including its dependency, frontier, recommendation, and completion rules.
 
-When the agent provides an available question tool, such as `AskUserQuestion` or `request_user_input`, prefer it where its usage rules permit. Offer recommended choices and allow free-text answers. Otherwise, use `grilling`'s chat question format. Use the same tool preference for the final confirmation when permitted; an unanswered question is not confirmation.
+Print every interview round and the final confirmation request directly in the response, using `grilling`'s chat question format. Include recommended answers and let the user reply in chat. Do not call question tools. Wait for the user's reply; an unanswered question is not confirmation.
