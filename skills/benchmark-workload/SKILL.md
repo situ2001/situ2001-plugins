@@ -25,11 +25,13 @@ Separate cold startup, initialization or model loading, warm execution, and sust
 
 Choose run count, sampling interval, and duration from workload variability, metric resolution, the user's constraints, and the decision being made. State the rationale; there is no universal fixed run count or measurement window. Arrange cleanup for owned processes and monitors.
 
-Read the relevant sections of [measurement boundaries](references/measurement-boundaries.md) when measuring:
+Read only the guides relevant to the measurement:
 
-- [Web delivery](references/measurement-boundaries.md#web-delivery): build size, network transfer, or page readiness.
-- [Inference](references/measurement-boundaries.md#inference): model execution, including generated audio.
-- [Resource use](references/measurement-boundaries.md#resource-use): CPU, memory, or GPU activity.
+- [Scheduling and asynchronous pipelines](references/scheduling-and-async.md): virtual progress, responsiveness, queues, or frame delivery.
+- [Profiling](references/profiling.md): sampling, injected probes, or attributing a measured difference to a hotspot.
+- [Resource use](references/resource-use.md): process groups, CPU accounting, memory, GPU activity, or observation overhead.
+- [Web delivery and artifact size](references/web-and-artifact-size.md): route assets, network transfer, page readiness, or native/package size.
+- [Inference](references/inference.md): stage/backend comparisons, generation, or model/cache lifecycle.
 
 This step is complete when the instruments can observe the chosen operation at the claimed scope, with their relevant limitations understood.
 

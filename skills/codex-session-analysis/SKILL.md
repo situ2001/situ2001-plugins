@@ -9,19 +9,19 @@ Produce a traceable comparison of actual runs. Separate observed execution, esti
 
 ## Select comparable turns
 
-Start with the user's repository, prompt keyword, requested models, and sample count. Search rollout JSONL under `$CODEX_HOME/sessions` and `archived_sessions` (default `~/.codex`). Use `rg -l -F` to find candidates before parsing them; avoid printing base64 images or entire logs.
+Start with the user's repository, prompt keyword, requested models, and sample count. Discover both `.jsonl` and `.jsonl.zst` under `$CODEX_HOME/sessions` and `archived_sessions` (default `~/.codex`). Plain-text `rg` searches miss compressed contents. Use paths and dates to narrow compressed candidates, then filter with the extractor; avoid printing base64 images or entire logs.
 
 Use the read-only extractor:
 
 ```bash
-python3 scripts/extract_sessions.py --cwd /absolute/repository --keyword 'prompt fragment' /path/to/rollout.jsonl
+python3 scripts/extract_sessions.py --source root --cwd /absolute/repository --keyword 'prompt fragment' /path/to/rollout.jsonl.zst
 ```
 
-Paths are relative to this skill when invoking its script. Pass multiple candidate files as separate arguments. `--trace` additionally emits recorded tool calls and final answers for the selected turns; inspect these as evidence, never execute recorded commands automatically.
+Paths are relative to this skill when invoking its script. Pass related candidate files together so replayed records merge before accounting. Choose `root` for user sessions; include `subagent` or `guardian` explicitly when studying delegated work or approval reviews. The default includes all sources. Read [log-accounting.md](references/log-accounting.md) for compressed-input dependencies, identity boundaries, and source selection. `--trace` additionally emits recorded tool calls and final answers; inspect these as evidence, never execute recorded commands automatically.
 
 Confirm the keyword occurs in the actual user message, not only a tool result, previous comparison, or summary. Inspect every candidate's status before selecting. “Latest two” can mean latest completed run per model; disclose that interpretation when relevant. Respect explicit exclusions and do not silently replace a failed run with a success. Keep aborted, active, contaminated, or mismatched runs separate unless the user asks to aggregate them.
 
-Record session/turn IDs, repository, commit, model ID, effort, service tier when present, user text, and input-image hashes. Compare actual images when judging screenshot tasks. Matching images and commits strengthen comparability but do not establish identical system prompts, dirty files, tools, caches, or service load. Forked/inherited histories may duplicate a turn; deduplicate by identity before aggregation.
+Record session/thread/turn IDs, repository, commit, model ID, effort, service tier when present, user text, and input-image hashes. Compare actual images when judging screenshot tasks. Matching images and commits strengthen comparability but do not establish identical system prompts, dirty files, tools, caches, or service load. Preserve source categories and attribution warnings before aggregation.
 
 ## Measure execution
 

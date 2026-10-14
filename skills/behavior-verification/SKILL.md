@@ -45,6 +45,10 @@ Read only the relevant execution recipe:
 - [React behavior](references/react-behavior.md): hooks, effects, component interactions, asynchronous transitions, or native component substitutes.
 - [Browser flows](references/browser-flows.md): Playwright/browser setup, request fixtures, browser assertions, and E2E boundaries.
 - [Native source on a compatible host](references/native-host.md): focused local compile-and-run checks for iOS/macOS source, replacing only unavailable boundaries.
+- [Native UI](references/native-ui.md): actual accessibility/window geometry, activation, focus, or background input routing.
+- [Stateful generative checks](references/stateful-generative.md): generated operation sequences, replica delivery schedules, replay, or failure minimization.
+- [Original binary differential checks](references/binary-differential.md): recover an ABI or compare an emulator/HLE with controlled execution of original code.
+- [Data pipelines](references/data-pipelines.md): archive change audits, cross-table contracts, value provenance, time-zone invariants, or generated-output removal.
 
 For other languages, apply the same method using their native runtime and assertion tools.
 
