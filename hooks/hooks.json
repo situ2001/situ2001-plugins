@@ -5,8 +5,19 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cat \"${PLUGIN_ROOT:-${CLAUDE_PLUGIN_ROOT}}/hooks/docs/avoid-speculative-defensiveness.md\"",
+            "command": "python3 \"${PLUGIN_ROOT:-${CLAUDE_PLUGIN_ROOT}}/hooks/scripts/remind-coding-guidance.py\"",
             "statusMessage": "loading coding guidance"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT:-${CLAUDE_PLUGIN_ROOT}}/hooks/scripts/remind-coding-guidance.py\"",
+            "statusMessage": "checking coding guidance reminder"
           }
         ]
       }
