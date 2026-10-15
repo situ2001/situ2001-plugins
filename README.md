@@ -2,7 +2,7 @@
 
 Personal hooks and skills for Claude Code and Codex, packaged as the `situ2001` plugin.
 
-The marketplace is named `situ2001-plugins`; skills use the `situ2001:` namespace.
+The Claude Code marketplace is named `situ2001-plugins`; Codex uses the personal marketplace name from `~/.agents/plugins/marketplace.json`. Skills use the `situ2001:` namespace.
 
 ## Claude Code
 

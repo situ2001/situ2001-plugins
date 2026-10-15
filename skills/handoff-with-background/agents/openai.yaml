@@ -1,0 +1,4 @@
+interface:
+  display_name: "Handoff With Background"
+  short_description: "Preserve task background across conversation handoffs"
+  default_prompt: "Use $handoff-with-background to update this task’s handoff while retaining its goals, sources, decision rationale, and open questions."
