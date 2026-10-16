@@ -8,7 +8,8 @@ import sys
 
 
 INTERVAL = 75_000
-GUIDANCE = Path(__file__).resolve().parents[1] / "docs/avoid-speculative-defensiveness.md"
+DOCS = Path(__file__).resolve().parents[1] / "docs"
+GUIDANCE = (DOCS / "software-design.md", DOCS / "avoid-speculative-defensiveness.md")
 MARKER = re.compile(r"\A<!-- situ2001:coding-guidance input_tokens=(\d+|unknown) -->")
 
 
@@ -107,7 +108,7 @@ def main():
     print(f"<!-- situ2001:coding-guidance input_tokens={position} -->")
     if event == "UserPromptSubmit":
         print("Reminder: the following coding instructions remain in effect.\n")
-    print(GUIDANCE.read_text(encoding="utf-8"), end="")
+    print("\n".join(path.read_text(encoding="utf-8") for path in GUIDANCE), end="")
 
 
 if __name__ == "__main__":

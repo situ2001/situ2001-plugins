@@ -18,8 +18,9 @@ Install this folder as a local plugin (Use `skills/situ2001-plugin-setup` when i
 
 ## Coding guidance reminders
 
-`SessionStart` injects `hooks/docs/avoid-speculative-defensiveness.md` at startup,
-resume, and after compaction. At each user-turn start, `UserPromptSubmit` reads the
+`SessionStart` injects `hooks/docs/software-design.md` followed by
+`hooks/docs/avoid-speculative-defensiveness.md` at startup, resume, and after
+compaction. At each user-turn start, `UserPromptSubmit` reads the
 client's transcript and repeats the guidance once the latest request's input
 context has grown by 75,000 tokens since the last injection. It uses request input
 tokens, including cached input, rather than cumulative session usage. A jump of

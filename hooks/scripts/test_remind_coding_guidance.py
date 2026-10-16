@@ -52,10 +52,11 @@ class ReminderTests(unittest.TestCase):
             reminder.main()
         return output.getvalue()
 
-    def test_startup_always_injects_original_guidance(self):
+    def test_startup_always_injects_all_guidance_in_order(self):
         output = self.run_hook(event="SessionStart")
-        self.assertTrue(output.startswith(marker()))
-        self.assertIn(reminder.GUIDANCE.read_text(), output)
+        software_design = (reminder.DOCS / "software-design.md").read_text()
+        original_guidance = (reminder.DOCS / "avoid-speculative-defensiveness.md").read_text()
+        self.assertEqual(output, marker() + software_design + "\n" + original_guidance)
 
     def test_missing_usage_does_not_remind(self):
         self.assertEqual(self.run_hook(), "")
@@ -71,6 +72,8 @@ class ReminderTests(unittest.TestCase):
         output = self.run_hook(records)
         self.assertTrue(output.startswith(marker(115_000)))
         self.assertIn("Reminder:", output)
+        for path in reminder.GUIDANCE:
+            self.assertIn(path.read_text(), output)
         records.extend([injected(output), usage(115_001), usage(189_999)])
         self.assertEqual(self.run_hook(records), "")
         records.append(usage(190_000))
