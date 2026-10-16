@@ -1,5 +1,9 @@
 ## Avoid Speculative Defensiveness and Inferred Properties
 
+Defensive code is easy to add, but every extra branch adds behavior
+to understand, verify, and maintain. Take on that cost only for a
+concrete need supported by the sources below.
+
 Do not add guards, fallbacks, retries, compatibility paths,
 version checks, arbitrary limits, or recovery logic merely
 because a failure is theoretically imaginable.
@@ -28,6 +32,11 @@ before adding another layer around it.
 
 ## Keep Verification Proportionate
 
+Tests are easy to generate, but their assertions create expectations
+that future changes must maintain. Protect required behavior,
+established contracts, and observed regressions; a passing test does
+not establish that the defensive behavior it enforces is necessary.
+
 Writing or running unit tests and focused local checks is optional.
 For simple changes that can be assessed reliably by inspection,
 it is fine to skip them. When verification would help, choose the
@@ -40,3 +49,20 @@ to implement, fix, test, or verify a change is not such a request.
 Once the relevant checks pass, stop. Repeat or broaden verification
 only when new changes, failures, or unresolved concerns justify it,
 within the scope allowed above.
+
+## Keep Documentation Worth Maintaining
+
+Documentation is easy to generate but costly to keep accurate.
+Before creating or expanding it, identify its reader and lasting use.
+Prefer references to maintained documents, code, configuration, or
+lookup commands over copying information readily available there,
+especially details that change with the implementation.
+
+Keep one-off progress, change summaries, and verification results in
+the response unless a persistent record is requested or required by
+the project's workflow.
+
+Honor requested documentation and established project responsibilities.
+Preserve useful operating instructions, non-obvious decisions and
+conventions, and historical evidence. Judge inline detail by the
+reader's need and lookup cost.

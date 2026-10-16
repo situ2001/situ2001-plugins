@@ -1,13 +1,15 @@
 ---
 name: de-defend
-description: Audit a code change for speculative defenses or inferred properties, or investigate whether they block required behavior. Use for a requested de-defend review, overengineering audit, or stalled debugging with a plausible self-imposed restriction.
+description: Audit speculative code defenses and inferred properties, or consolidate repetitive and easily outdated Markdown. Use for de-defend reviews, overengineering audits, stalled debugging with a plausible self-imposed restriction, or Markdown cleanup.
 ---
 
 # De-Defend
 
 Requirements create constraints. Evidence creates defensive code. Imagination does not.
 
-Apply this audit to the current diff and the code directly involved in the requested behavior or failure. Keep changes within that scope; this is not a general refactor or a request for new features.
+Use the user-specified scope. Otherwise, start with the current diff and directly involved code or documents. Follow document references and duplicated facts as needed to resolve repetition and inconsistent claims within that task. Review an entire workspace when explicitly requested. Preserve the requested behavior; this audit does not add features.
+
+For Markdown cleanup, read [references/consolidating-markdown.md](references/consolidating-markdown.md) and follow its workflow. For code, follow the audit below. When both are involved, apply each workflow to its part of the change.
 
 ## Establish the target
 
