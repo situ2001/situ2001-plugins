@@ -56,7 +56,11 @@ class ReminderTests(unittest.TestCase):
         output = self.run_hook(event="SessionStart")
         software_design = (reminder.DOCS / "software-design.md").read_text()
         original_guidance = (reminder.DOCS / "avoid-speculative-defensiveness.md").read_text()
-        self.assertEqual(output, marker() + software_design + "\n" + original_guidance)
+        mutual_trust = (reminder.DOCS / "mutual-trust-and-honest-collaboration.md").read_text()
+        self.assertEqual(
+            output,
+            marker() + software_design + "\n" + original_guidance + "\n" + mutual_trust,
+        )
 
     def test_missing_usage_does_not_remind(self):
         self.assertEqual(self.run_hook(), "")

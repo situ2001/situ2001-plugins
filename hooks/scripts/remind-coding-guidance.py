@@ -9,7 +9,11 @@ import sys
 
 INTERVAL = 75_000
 DOCS = Path(__file__).resolve().parents[1] / "docs"
-GUIDANCE = (DOCS / "software-design.md", DOCS / "avoid-speculative-defensiveness.md")
+GUIDANCE = (
+    DOCS / "software-design.md",
+    DOCS / "avoid-speculative-defensiveness.md",
+    DOCS / "mutual-trust-and-honest-collaboration.md",
+)
 MARKER = re.compile(r"\A<!-- situ2001:coding-guidance input_tokens=(\d+|unknown) -->")
 
 
