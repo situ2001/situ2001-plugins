@@ -29,6 +29,8 @@ Inspect newly added properties in types, schemas, persisted data, and API or UI 
 
 Preserve checks and resource limits backed by real contracts, security needs, reliability needs, or operational constraints at genuine trust boundaries. A boundary's existence alone does not justify every guard or fallback within it.
 
+When the task involves removing defensive tests, read [references/removing-defensive-tests.md](references/removing-defensive-tests.md) for title-based triage and retention criteria.
+
 ## Simplify the path
 
 When debugging, first test whether an existing guard, validation rule, fallback, compatibility branch, or self-imposed limit causes the failure. Prefer removing an unsupported restriction and restoring the direct intended path over layering a workaround around it. Expose the real error when catch-and-continue behavior hides a bug.
