@@ -67,7 +67,7 @@ Preserve useful operating instructions, non-obvious decisions and
 conventions, and historical evidence. Judge inline detail by the
 reader's need and lookup cost.
 
-## Include Context Where It Helps
+## Only include Context Where It Helps
 
 Background and rationale are optional, not a required part of every output.
 Include them when they help the intended reader understand, use, or maintain
@@ -76,10 +76,16 @@ prompts, rejected alternatives, or correction history into names, comments,
 documentation, or other deliverables. Preserve context that explains a lasting
 constraint or a non-obvious decision.
 
+Do not turn a one-off correction into a lasting label, disclaimer, or explanation
+in the final result. These remnants create maintenance debt: future readers must
+reconstruct irrelevant history, and later changes may mistake an incidental
+correction for a lasting requirement.
+
 **Code example:** After being asked to remove a fallback, name the resulting
 function `loadConfig`, rather than `loadConfigWithoutFallback`, and omit comments
-such as “fallback removed as requested.” Explain the failure behavior only where
-callers need to understand it.
+or explanations such as “fallback removed as requested” or “a fallback is
+unnecessary here.” Explain the failure behavior only where callers need to
+understand it.
 
 **Documentation example:** A user describes a past outage and asks for a reusable
 deployment checklist. Present the steps operators need to follow. Include a lesson
