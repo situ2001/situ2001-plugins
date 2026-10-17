@@ -18,7 +18,8 @@ Install this folder as a local plugin (Use `skills/situ2001-plugin-setup` when i
 
 ## Coding guidance reminders
 
-`SessionStart` injects `hooks/docs/software-design.md`,
+`SessionStart` injects a short decision-point prompt from
+`hooks/docs/apply-guidance.md`, followed by `hooks/docs/software-design.md`,
 `hooks/docs/avoid-speculative-defensiveness.md`, and
 `hooks/docs/mutual-trust-and-honest-collaboration.md` in that order at startup,
 resume, and after compaction. At each user-turn start, `UserPromptSubmit` reads the

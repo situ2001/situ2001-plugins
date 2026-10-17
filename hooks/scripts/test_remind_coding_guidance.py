@@ -54,12 +54,14 @@ class ReminderTests(unittest.TestCase):
 
     def test_startup_always_injects_all_guidance_in_order(self):
         output = self.run_hook(event="SessionStart")
+        application = (reminder.DOCS / "apply-guidance.md").read_text()
         software_design = (reminder.DOCS / "software-design.md").read_text()
         original_guidance = (reminder.DOCS / "avoid-speculative-defensiveness.md").read_text()
         mutual_trust = (reminder.DOCS / "mutual-trust-and-honest-collaboration.md").read_text()
         self.assertEqual(
             output,
-            marker() + software_design + "\n" + original_guidance + "\n" + mutual_trust,
+            marker() + application + "\n" + software_design + "\n"
+            + original_guidance + "\n" + mutual_trust,
         )
 
     def test_missing_usage_does_not_remind(self):
