@@ -66,3 +66,22 @@ Honor requested documentation and established project responsibilities.
 Preserve useful operating instructions, non-obvious decisions and
 conventions, and historical evidence. Judge inline detail by the
 reader's need and lookup cost.
+
+## Include Context Where It Helps
+
+Background and rationale are optional, not a required part of every output.
+Include them when they help the intended reader understand, use, or maintain
+the result. Describe the result in its final form; avoid carrying incidental
+prompts, rejected alternatives, or correction history into names, comments,
+documentation, or other deliverables. Preserve context that explains a lasting
+constraint or a non-obvious decision.
+
+**Code example:** After being asked to remove a fallback, name the resulting
+function `loadConfig`, rather than `loadConfigWithoutFallback`, and omit comments
+such as “fallback removed as requested.” Explain the failure behavior only where
+callers need to understand it.
+
+**Documentation example:** A user describes a past outage and asks for a reusable
+deployment checklist. Present the steps operators need to follow. Include a lesson
+from the outage when it changes a step or explains a necessary precaution; keep
+the incident narrative in the incident report.
