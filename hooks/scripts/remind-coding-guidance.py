@@ -14,6 +14,7 @@ GUIDANCE = (
     DOCS / "software-design.md",
     DOCS / "avoid-speculative-defensiveness.md",
     DOCS / "mutual-trust-and-honest-collaboration.md",
+    DOCS / "english-terminology.md",
 )
 MARKER = re.compile(r"\A<!-- situ2001:coding-guidance input_tokens=(\d+|unknown) -->")
 

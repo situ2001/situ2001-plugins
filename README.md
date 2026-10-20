@@ -20,8 +20,9 @@ Install this folder as a local plugin (Use `skills/situ2001-plugin-setup` when i
 
 `SessionStart` injects a short decision-point prompt from
 `hooks/docs/apply-guidance.md`, followed by `hooks/docs/software-design.md`,
-`hooks/docs/avoid-speculative-defensiveness.md`, and
-`hooks/docs/mutual-trust-and-honest-collaboration.md` in that order at startup,
+`hooks/docs/avoid-speculative-defensiveness.md`,
+`hooks/docs/mutual-trust-and-honest-collaboration.md`, and
+`hooks/docs/english-terminology.md` in that order at startup,
 resume, and after compaction. At each user-turn start, `UserPromptSubmit` reads the
 client's transcript and repeats the guidance once the latest request's input
 context has grown by 75,000 tokens since the last injection. It uses request input
