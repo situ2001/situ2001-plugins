@@ -59,10 +59,12 @@ class ReminderTests(unittest.TestCase):
         original_guidance = (reminder.DOCS / "avoid-speculative-defensiveness.md").read_text()
         mutual_trust = (reminder.DOCS / "mutual-trust-and-honest-collaboration.md").read_text()
         english_terminology = (reminder.DOCS / "english-terminology.md").read_text()
+        clear_writing = (reminder.DOCS / "clear-writing.md").read_text()
         self.assertEqual(
             output,
             marker() + application + "\n" + software_design + "\n"
-            + original_guidance + "\n" + mutual_trust + "\n" + english_terminology,
+            + original_guidance + "\n" + mutual_trust + "\n" + english_terminology
+            + "\n" + clear_writing,
         )
 
     def test_missing_usage_does_not_remind(self):
