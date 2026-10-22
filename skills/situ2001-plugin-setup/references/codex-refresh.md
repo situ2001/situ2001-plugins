@@ -1,5 +1,8 @@
 # Codex refresh after edits
 
+Preserve the local base instructions file, `model_instructions_file`, and guidance
+hook settings unless the user requests prompting changes.
+
 For a plugin already listed in a local marketplace, read its marketplace name:
 
 ```bash

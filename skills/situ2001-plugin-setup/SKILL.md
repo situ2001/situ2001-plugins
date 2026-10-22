@@ -11,7 +11,7 @@ Follow the requested agent scope. When no agent is specified, consider both Code
 
 Read only the reference for the agent and installation stage being handled:
 
-- **Codex initial installation:** read [references/codex-initial-setup.md](references/codex-initial-setup.md) for source placement, marketplace creation, and installation.
+- **Codex initial installation:** read [references/codex-initial-setup.md](references/codex-initial-setup.md) for source placement, marketplace creation, installation, and local base instructions with hook guidance.
 - **Codex refresh after edits:** read [references/codex-refresh.md](references/codex-refresh.md) for cache version rotation and reinstallation.
 - **Claude Code installation or refresh:** read [references/claude-setup-refresh.md](references/claude-setup-refresh.md) for live-directory loading or a persistent installation.
 

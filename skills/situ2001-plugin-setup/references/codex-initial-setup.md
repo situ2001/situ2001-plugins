@@ -32,3 +32,22 @@
    ```
 
    Do not run `codex plugin marketplace add` for the default `~/.agents/plugins/marketplace.json` marketplace.
+
+5. Store the local base instructions in `base-instructions.md` under Codex home
+   (`$CODEX_HOME`, or `~/.codex` when unset). Use the single `Apply This Guidance`
+   anchor:
+
+   ```text
+   Follow "Apply This Guidance" and the guidance it introduces, injected by the situ2001 plugin hooks, throughout the task.
+   ```
+
+   In that directory's `config.toml`, set the top-level `model_instructions_file`
+   to the prompt file's absolute path. This replaces Codex's built-in base
+   instructions. Preserve unrelated settings.
+
+   Keep the plugin's `SessionStart` and `UserPromptSubmit` guidance hooks enabled
+   and trusted in `/hooks`. Their output supplies the full guidance as developer
+   context. Match the anchor to the heading in `hooks/docs/apply-guidance.md`;
+   keep the guidance itself in the plugin's `hooks/docs` files.
+
+   Use `codex features list` to confirm that Codex can load the configuration.
