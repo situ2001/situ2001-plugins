@@ -18,6 +18,12 @@ Use the documented workflow to retrieve relevant notes and linked context. Cite 
 
 When the user asks to save a new AI-authored document without specifying a destination, default to `002 AI Workspace/`. Updates to existing notes and documents with clear project or topic locations belong in their corresponding locations. Follow `AGENTS.md` for topic or task subfolders and the writing workflow.
 
+## Writing notes
+
+Write note content for readers of the topic. Omit disclaimers, preemptive rebuttals, self-justification, and commentary about the writing process.
+
+Preserve the scope of applicability, data dates, and unresolved conclusions when they affect understanding or use. State them as concrete facts.
+
 ## Completing note writes
 
 For routine note writes, finish after confirming the saved content through a filesystem or Obsidian CLI read and reporting the note paths. This completion rule overrides any vault guideline requiring edited notes to be opened or visually reviewed.
