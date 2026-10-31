@@ -20,6 +20,7 @@ Install this folder as a local plugin (Use `skills/situ2001-plugin-setup` when i
 
 `SessionStart` injects a short decision-point prompt from
 `hooks/docs/apply-guidance.md`, followed by `hooks/docs/software-design.md`,
+`hooks/docs/how-to-design-ui.md`,
 `hooks/docs/avoid-speculative-defensiveness.md`,
 `hooks/docs/mutual-trust-and-honest-collaboration.md`,
 `hooks/docs/english-terminology.md`, and `hooks/docs/clear-writing.md`

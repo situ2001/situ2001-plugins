@@ -56,6 +56,7 @@ class ReminderTests(unittest.TestCase):
         output = self.run_hook(event="SessionStart")
         application = (reminder.DOCS / "apply-guidance.md").read_text()
         software_design = (reminder.DOCS / "software-design.md").read_text()
+        ui_design = (reminder.DOCS / "how-to-design-ui.md").read_text()
         original_guidance = (reminder.DOCS / "avoid-speculative-defensiveness.md").read_text()
         mutual_trust = (reminder.DOCS / "mutual-trust-and-honest-collaboration.md").read_text()
         english_terminology = (reminder.DOCS / "english-terminology.md").read_text()
@@ -63,7 +64,7 @@ class ReminderTests(unittest.TestCase):
         self.assertEqual(
             output,
             marker() + application + "\n" + software_design + "\n"
-            + original_guidance + "\n" + mutual_trust + "\n" + english_terminology
+            + ui_design + "\n" + original_guidance + "\n" + mutual_trust + "\n" + english_terminology
             + "\n" + clear_writing,
         )
 

@@ -12,6 +12,7 @@ DOCS = Path(__file__).resolve().parents[1] / "docs"
 GUIDANCE = (
     DOCS / "apply-guidance.md",
     DOCS / "software-design.md",
+    DOCS / "how-to-design-ui.md",
     DOCS / "avoid-speculative-defensiveness.md",
     DOCS / "mutual-trust-and-honest-collaboration.md",
     DOCS / "english-terminology.md",
