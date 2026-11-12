@@ -1,0 +1,6 @@
+interface:
+  display_name: "Setup situ2001 Plugins"
+  short_description: "Refresh situ2001 and selected global skills"
+  default_prompt: "Use $setup-situ2001-plugins to install or refresh the situ2001 plugin and its selected third-party skills."
+policy:
+  allow_implicit_invocation: false
