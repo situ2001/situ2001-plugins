@@ -5,7 +5,7 @@
 - **Parent Issue:** overall goal, scope and an explicit link to the designated Handoff. Other Documents are supporting sources.
 - **Handoff:** shared navigation and project-wide constraints with necessary rationale. Link code entry points, requirements, designs, conversation records, transcripts and resources, explaining what each contains and when to read it. State consequential shared constraints directly. Keep task-specific sources and specifications with their Issue; discover work through `list_issues`, not a duplicate directory. Reference maintained repository and skill guidance, retaining project-specific exceptions.
 - **Sub-issue:** an independently trackable outcome. Its description holds consolidated objectives, scope and acceptance criteria. Give a local contract one primary record and reference it from related Issues; affecting several tasks does not make it a global constraint.
-- **Comments:** incoming material, discussion, confirmations, progress and evidence. Append by default; edit existing comments only when requested. Use parent discussion for intake whose task ownership is unresolved.
+- **Comments:** the Issue's update history and discussion, including incoming material, confirmations, progress and evidence. Append by default; edit existing comments only when requested. Use parent discussion for intake whose task ownership is unresolved.
 
 Resolve targets from the request or conversation. For a selected sub-issue, read its Requirement parent. Search when necessary; clarify meaningful ambiguity before writing. Keep Requirements separate; an absent match does not authorize creating one.
 
@@ -16,6 +16,8 @@ An execution Issue is a vertical slice: one narrow but complete behavior that ca
 ## Incremental context
 
 Select the appropriate skill from the user's request; naming the skill is optional. Ordinary chat alone does not authorize Linear writeback. Triage routes increments, creates necessary sub-issues and organizes relationships. Existing descriptions and Handoff remain unchanged unless their edit is explicitly requested; routine consolidation waits for the user to request Digest or describe the consolidation they want.
+
+Keep progress history in comments, not in the Issue description. On the owning Issue, append an update when it enables a handoff, reports a new, changed or resolved blocker, or adds evidence that affects Review or acceptance. Record what changed, link the evidence, and state the next action and who should take it when relevant. A commit or status change alone does not need a comment.
 
 Descriptions and Handoff are baselines. Explicit confirmations in comments apply before Digest; proposals and linked sources do not become decisions merely by being recorded. Distinguish agreed intent, observed implementation and unresolved interpretation. Digest consolidates confirmed changes into their owning records, keeping comments as history.
 
