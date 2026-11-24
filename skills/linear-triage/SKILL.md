@@ -5,7 +5,7 @@ description: Route incoming Linear context into comments and independently track
 
 # Linear Triage
 
-Read the shared [workflow](../linear-recall/references/workflow.md).
+On every invocation, read the shared [Linear Requirement workflow](../linear-recall/references/workflow.md) in full before proceeding, and follow it throughout.
 
 1. Read the Requirement's Handoff and relevant descriptions, comments and supplied sources. Clarify the objective, scope and acceptance criteria; ask about unresolved judgments that change the intended outcome.
 2. Reuse existing open work. Apply the shared ticket-scope rules when creating sub-issues; record established scope and acceptance criteria. A conversation may resolve a question without creating work.

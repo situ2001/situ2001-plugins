@@ -5,7 +5,7 @@ description: Consolidate confirmed Linear context into its owning Issue descript
 
 # Linear Digest
 
-Read the shared [workflow](../linear-recall/references/workflow.md).
+On every invocation, read the shared [Linear Requirement workflow](../linear-recall/references/workflow.md) in full before proceeding, and follow it throughout.
 
 1. Read the complete current Handoff and relevant descriptions and comments for each selected Requirement. Include current conversation decisions and work evidence; inspect sources when their claims matter.
 2. Reconcile confirmed increments using shared ownership, the focus and closure rules, and the context-retention rules below: task requirements into Issue descriptions; shared navigation and global constraints into Handoff. Keep unknown facts distinct from active work; a stopped question must not silently become a new task.

@@ -5,7 +5,9 @@ description: Read Linear Requirement context and scoped work, including confirme
 
 # Linear Recall
 
-Read the shared [workflow](references/workflow.md). Recall is read-only.
+On every invocation, read the shared [Linear Requirement workflow](references/workflow.md) in full before proceeding, and follow it throughout.
+
+Recall is read-only.
 
 1. Resolve the Requirement. On initial continuation, read its parent description and complete Handoff. Reuse context already read in this conversation; refresh when the question needs current state or changes are known. Read parent discussion when relevant, including intake not yet assigned to a sub-issue.
 2. Scope discovery follows the shared focus and closure rules:
