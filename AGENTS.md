@@ -4,6 +4,12 @@ Read [README.md](README.md) for the plugin overview and installation entry point
 
 ## Update and refresh the plugin
 
+Use `python3 scripts/refresh-codex-plugin.py --setup-marketplace` to connect this
+checkout to the Codex personal marketplace and install the plugin. For routine
+local updates, run `python3 scripts/refresh-codex-plugin.py`. Pass each changed
+skill directory as an argument to validate it. When committing and pushing, use
+the steps below so the reinstall uses the committed version.
+
 After changing plugin skills, hooks, scripts, or metadata:
 
 1. Keep `.codex-plugin/plugin.json` and `.claude-plugin/plugin.json` descriptions and release versions consistent where applicable. Keep plugin descriptions at the collection level; skill-specific behavior belongs in its `SKILL.md`.

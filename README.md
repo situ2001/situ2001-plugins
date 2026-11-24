@@ -14,7 +14,15 @@ Or inside a session: `/plugin` → install from folder.
 
 ## Codex
 
-Install this folder as a local plugin (Use `skills/situ2001-plugin-setup` when installing or maintaining), then review and trust the hooks with `/hooks`.
+Run this command from a Git checkout with `python3`, `git`, `codex`, and `claude`
+on your `PATH` to configure the personal marketplace and install the plugin.
+
+```bash
+python3 scripts/refresh-codex-plugin.py --setup-marketplace
+```
+
+Review and trust the hooks with `/hooks`. For routine updates, see the
+[plugin refresh commands](AGENTS.md#update-and-refresh-the-plugin).
 
 ## Coding guidance reminders
 
